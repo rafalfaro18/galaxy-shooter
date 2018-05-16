@@ -38,4 +38,4 @@ Material:
     - _Center: {r: 1, g: 0.3, b: 0.5, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Rotation: {r: 35, g: 25, b: 75, a: 0.1}
-    - _Scroll: {r: 3, g: 1, b: 0.6, a: 0.01}
+    - _Scroll: {r: 0, g: 30, b: 0, a: 0.01}
