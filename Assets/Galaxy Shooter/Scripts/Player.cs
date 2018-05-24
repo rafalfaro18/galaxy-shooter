@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
-	public float speed = 5.0f;
+	[SerializeField]
+	private float speed = 5.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +13,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Movement ();
+	}
+
+	private void Movement(){
 		float horizontalInput = Input.GetAxis ("Horizontal");
 		float verticalInput = Input.GetAxis ("Vertical");
 		transform.Translate (Vector3.right * speed * horizontalInput * Time.deltaTime );
