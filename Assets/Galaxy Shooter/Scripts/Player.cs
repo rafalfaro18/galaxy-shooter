@@ -7,6 +7,9 @@ public class Player : MonoBehaviour {
 	private float speed = 5.0f;
 	public GameObject laserPrefab;
 
+	public float fireRate = 0.25f;
+	public float canFire = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -16,8 +19,10 @@ public class Player : MonoBehaviour {
 	void Update () {
 		Movement ();
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)){
-			Debug.Log ("Fire!");
-			Instantiate (laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+			if( Time.time > canFire){
+				Instantiate (laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+				canFire = Time.time + fireRate;
+			}
 		}
 	}
 
