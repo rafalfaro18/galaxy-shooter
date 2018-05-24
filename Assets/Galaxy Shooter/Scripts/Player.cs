@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Movement ();
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)){
 			Debug.Log ("Fire!");
 			Instantiate (laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
 		}
