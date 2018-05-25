@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 
 	private float _canFire = 0.0f;
 
+	public bool canTripleShot = false;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -27,7 +29,13 @@ public class Player : MonoBehaviour {
 
 	private void Shoot(){
 		if( Time.time > _canFire){
-			Instantiate (_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+			if(canTripleShot == true){
+				Instantiate (_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+				Instantiate (_laserPrefab, transform.position + new Vector3(0.55f, 0.06f, 0), Quaternion.identity);
+				Instantiate (_laserPrefab, transform.position + new Vector3(-0.55f, 0.06f, 0), Quaternion.identity);
+			} else {
+				Instantiate (_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+			}
 			_canFire = Time.time + _fireRate;
 		}
 	}
