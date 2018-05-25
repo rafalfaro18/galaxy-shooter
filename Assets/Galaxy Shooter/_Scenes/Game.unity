@@ -144,6 +144,8 @@ MonoBehaviour:
   _speed: 5
   _laserPrefab: {fileID: 1805850629755380, guid: 8f82f99511a884c7ca9b3eae770892d5,
     type: 2}
+  _tripleShotPrefab: {fileID: 1270997191136996, guid: 9b65edac6db8446faa94120dd258215e,
+    type: 2}
   _fireRate: 0.25
   canTripleShot: 0
 --- !u!212 &213476599
