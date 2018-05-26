@@ -253,6 +253,8 @@ MonoBehaviour:
     type: 2}
   _fireRate: 0.25
   canTripleShot: 0
+  canBoostSpeed: 0
+  _speedBoost: 1.5
 --- !u!212 &213476599
 SpriteRenderer:
   m_ObjectHideFlags: 0

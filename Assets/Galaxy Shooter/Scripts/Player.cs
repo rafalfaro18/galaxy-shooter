@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 	private float _canFire = 0.0f;
 
 	public bool canTripleShot = false;
-	public bool canBoostSpeed = false;
+	public bool isSpeedBoostActive = false;
 	[SerializeField]
 	private float _speedBoost = 1.5f;
 
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 		float verticalInput = Input.GetAxis ("Vertical");
 
 		float totalSpeed = 0.0f;
-		if (canBoostSpeed == true) {
+		if (isSpeedBoostActive == true) {
 			totalSpeed = _speed * _speedBoost;
 		} else {
 			totalSpeed = _speed;
@@ -81,12 +81,12 @@ public class Player : MonoBehaviour {
 	}
 
 	public void SpeedBoostPowerUpOn(){
-		canBoostSpeed = true;
+		isSpeedBoostActive = true;
 		StartCoroutine (SpeedBoostPowerDownRoutine());
 	}
 
 	public IEnumerator SpeedBoostPowerDownRoutine(){
 		yield return new WaitForSeconds (5.0f);
-		canBoostSpeed = false;
+		isSpeedBoostActive = false;
 	}
 }
