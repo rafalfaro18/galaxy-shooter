@@ -58,4 +58,14 @@ public class Player : MonoBehaviour {
 			transform.position = new Vector3 (9.5f, transform.position.y, 0);
 		}
 	}
+
+	public void TripleShotPowerUpOn(){
+		canTripleShot = true;
+		StartCoroutine (TripleShotPowerDownRoutine());
+	}
+
+	public IEnumerator TripleShotPowerDownRoutine(){
+		yield return new WaitForSeconds (5.0f);
+		canTripleShot = false;
+	}
 }
