@@ -5,6 +5,8 @@ using UnityEngine;
 public class Powerup : MonoBehaviour {
 	[SerializeField]
 	private float _speed = 3.0f;
+	[SerializeField]
+	private int powerupID;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,8 +21,13 @@ public class Powerup : MonoBehaviour {
 		if(other.tag == "Player"){
 			Player player = other.GetComponent<Player> ();
 			if(player != null){
-				player.TripleShotPowerUpOn ();
-			}
+				if (powerupID == 0) {
+					player.TripleShotPowerUpOn ();
+				} else if (powerupID == 1) {
+					//enable speed boost here
+				} else if (powerupID == 2) {
+
+				}
 			Destroy (this.gameObject);
 		}
 	}
