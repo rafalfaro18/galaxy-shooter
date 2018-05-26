@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
 	private float _canFire = 0.0f;
 
 	public bool canTripleShot = false;
+	public bool canBoostSpeed = false;
+	[SerializeField]
+	private float _speedBoost = 1.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -43,8 +46,16 @@ public class Player : MonoBehaviour {
 	private void Movement(){
 		float horizontalInput = Input.GetAxis ("Horizontal");
 		float verticalInput = Input.GetAxis ("Vertical");
-		transform.Translate (Vector3.right * _speed * horizontalInput * Time.deltaTime );
-		transform.Translate (Vector3.up * _speed * verticalInput * Time.deltaTime );
+
+		float totalSpeed = 0.0f;
+		if (canBoostSpeed == true) {
+			totalSpeed = _speed * _speedBoost;
+		} else {
+			totalSpeed = _speed;
+		}
+
+		transform.Translate (Vector3.right * totalSpeed * horizontalInput * Time.deltaTime );
+		transform.Translate (Vector3.up * totalSpeed * verticalInput * Time.deltaTime );
 
 		if(transform.position.y > 0){
 			transform.position = new Vector3(transform.position.x, 0, 0);
@@ -67,5 +78,15 @@ public class Player : MonoBehaviour {
 	public IEnumerator TripleShotPowerDownRoutine(){
 		yield return new WaitForSeconds (5.0f);
 		canTripleShot = false;
+	}
+
+	public void SpeedBoostPowerUpOn(){
+		canBoostSpeed = true;
+		StartCoroutine (SpeedBoostPowerDownRoutine());
+	}
+
+	public IEnumerator SpeedBoostPowerDownRoutine(){
+		yield return new WaitForSeconds (5.0f);
+		canBoostSpeed = false;
 	}
 }
