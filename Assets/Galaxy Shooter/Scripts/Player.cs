@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private GameObject _explosionPrefab;
 
+	public bool hasShield = false;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -77,7 +79,10 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Damage(){
+		//if shield on don't do the damage
+		if(hasShield == false){
 		lives--;
+		}
 		if(lives < 1){
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
