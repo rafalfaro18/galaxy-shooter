@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour {
 
 	public Sprite[] lives;
 	public Image livesImageDisplay;
+	public int score;
+	public Text scoreText;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void UpdateScore(){
-		
+		score += 10;
+		scoreText.text = "Score: " + score;
 	}
 }
