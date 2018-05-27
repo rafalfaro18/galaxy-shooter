@@ -18,9 +18,10 @@ public class EnemyAI : MonoBehaviour {
 		//move down
 		transform.Translate (Vector3.down * _speed * Time.deltaTime );
 		//when off screen on bottom
-		if(transform.position.y < -6.6f){
+		if(transform.position.y < -7.0f){
 			//respawn back on top with a new x position between the bounds of the screen
-			transform.position = new Vector3(Random.Range(-7.6f, 7.6f), 6.6f, transform.position.z);
+			float randomX = Random.Range(-7.0f, 7.0f);
+			transform.position = new Vector3(randomX, 7.0f, transform.position.z);
 		}
 	}
 }
