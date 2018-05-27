@@ -30,9 +30,16 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private GameObject _shieldGameObject;
 
+	[SerializeField]
+	private UIManager _uiManager;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
+		_uiManager = GameObject.Find ("Canvas").GetComponent<UIManager> ();
+		if(_uiManager!=null){
+			_uiManager.UpdateLives (lives);
+		}
 	}
 	
 	// Update is called once per frame
@@ -89,6 +96,7 @@ public class Player : MonoBehaviour {
 			return;
 		}
 		lives--;
+		_uiManager.UpdateLives (lives);
 		if(lives < 1){
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
