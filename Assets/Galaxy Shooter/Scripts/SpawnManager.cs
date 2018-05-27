@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine (SpawnEnemy ());
+		StartCoroutine (EnemySpawnRoutine ());
 	}
 	
 	// Update is called once per frame
@@ -21,11 +21,11 @@ public class SpawnManager : MonoBehaviour {
 	}
 
 	//create a coroutine to spawn enemy every 5 seconds
-	private IEnumerator SpawnEnemy(){
+	private IEnumerator EnemySpawnRoutine(){
 		//create a game loop (while infinite loop) while true yield return new WaitForSeconds(5)
 		while(true){
+			Instantiate (enemyShipPrefab, new Vector3(Random.Range(-7.0f, 7.0f), 7, 0) , Quaternion.identity );
 			yield return new WaitForSeconds (5.0f);
-			Instantiate (enemyShipPrefab, new Vector3(Random.Range(-7.0f, 7.0f), 7) , Quaternion.identity );
 		}
 	}
 }
