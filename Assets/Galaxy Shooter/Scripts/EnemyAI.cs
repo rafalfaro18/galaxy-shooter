@@ -30,8 +30,8 @@ public class EnemyAI : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Laser" ){
 			//if enemy colides the laser, the laser and the enemy are destroyed
-			Destroy(this.gameObject);
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
+			Destroy(this.gameObject);
 			if(other.transform.parent != null){
 				Destroy (other.transform.parent.gameObject);
 			}
@@ -43,8 +43,8 @@ public class EnemyAI : MonoBehaviour {
 			if(player != null){
 				player.Damage ();
 			}
-			Destroy (this.gameObject);
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
+			Destroy (this.gameObject);
 		} 
 
 	}

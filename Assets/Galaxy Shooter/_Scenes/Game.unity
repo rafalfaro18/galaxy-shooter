@@ -153,7 +153,7 @@ MonoBehaviour:
   isSpeedBoostActive: 0
   _speedBoost: 1.5
   lives: 3
-  _playerExplosionPrefab: {fileID: 1302619412809280, guid: bf3a85d56b85844cfb867a6a22a21e25,
+  _explosionPrefab: {fileID: 1302619412809280, guid: bf3a85d56b85844cfb867a6a22a21e25,
     type: 2}
 --- !u!212 &213476599
 SpriteRenderer:

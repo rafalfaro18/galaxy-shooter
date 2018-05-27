@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 	public int lives = 3;
 
 	[SerializeField]
-	private GameObject _playerExplosionPrefab;
+	private GameObject _explosionPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -79,8 +79,8 @@ public class Player : MonoBehaviour {
 	public void Damage(){
 		lives--;
 		if(lives < 1){
+			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
-			Instantiate (_playerExplosionPrefab, transform.position, Quaternion.identity);
 		}
 	}
 
