@@ -152,6 +152,7 @@ MonoBehaviour:
   canTripleShot: 0
   isSpeedBoostActive: 0
   _speedBoost: 1.5
+  lives: 3
 --- !u!212 &213476599
 SpriteRenderer:
   m_ObjectHideFlags: 0

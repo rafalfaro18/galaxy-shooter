@@ -25,23 +25,23 @@ public class EnemyAI : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
-		//if colides with player
-		if (other.tag == "Player") {
-			//gets destroyed and the player loses one life (Enemy substracts the life)
-			other.gameObject.GetComponent<Player>().lives--;
-			if (other.gameObject.GetComponent<Player>().lives > 0) {
-				Destroy (this.gameObject);
-			} else {
-				//if player lives == 0 destroys player
-				Destroy(other.gameObject);
-			}
-
-		} else if(other.tag == "Laser" ){
+	private void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "Laser" ){
 			//if enemy colides the laser, the laser and the enemy are destroyed
 			Destroy(this.gameObject);
+			if(other.transform.parent != null){
+				Destroy (other.transform.parent.gameObject);
+			}
 			Destroy (other.gameObject);
-		}
+		} else if (other.tag == "Player") {
+			//if colides with player
+			Player player = other.GetComponent<Player>();
+			//gets destroyed and the player loses one life (Enemy substracts the life)
+			if(player != null){
+				player.Damage ();
+			}
+			Destroy (this.gameObject);
+		} 
 
 	}
 }

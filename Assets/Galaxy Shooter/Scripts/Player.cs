@@ -73,6 +73,13 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public void Damage(){
+		lives--;
+		if(lives < 1){
+			Destroy (this.gameObject);
+		}
+	}
+
 	public void TripleShotPowerUpOn(){
 		canTripleShot = true;
 		StartCoroutine (TripleShotPowerDownRoutine());
