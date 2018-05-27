@@ -27,6 +27,9 @@ public class Player : MonoBehaviour {
 
 	public bool shieldsActive = false;
 
+	[SerializeField]
+	private GameObject _shieldGameObject;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -82,6 +85,7 @@ public class Player : MonoBehaviour {
 		//if shield on don't do the damage
 		if(shieldsActive == true){
 			shieldsActive = false;
+			_shieldGameObject.SetActive (false);
 			return;
 		}
 		lives--;
@@ -113,5 +117,6 @@ public class Player : MonoBehaviour {
 
 	public void EnableShields(){
 		shieldsActive = true;
+		_shieldGameObject.SetActive (true);
 	}
 }
