@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private GameObject _explosionPrefab;
 
-	public bool hasShield = false;
+	public bool shieldsActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -80,9 +80,11 @@ public class Player : MonoBehaviour {
 
 	public void Damage(){
 		//if shield on don't do the damage
-		if(hasShield == false){
-		lives--;
+		if(shieldsActive == true){
+			shieldsActive = false;
+			return;
 		}
+		lives--;
 		if(lives < 1){
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
@@ -107,5 +109,9 @@ public class Player : MonoBehaviour {
 	public IEnumerator SpeedBoostPowerDownRoutine(){
 		yield return new WaitForSeconds (5.0f);
 		isSpeedBoostActive = false;
+	}
+
+	public void EnableShields(){
+		shieldsActive = true;
 	}
 }

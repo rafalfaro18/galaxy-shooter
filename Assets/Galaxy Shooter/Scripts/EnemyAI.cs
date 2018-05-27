@@ -42,7 +42,6 @@ public class EnemyAI : MonoBehaviour {
 			//gets destroyed and the player loses one life (Enemy substracts the life)
 			if(player != null){
 				player.Damage ();
-				player.hasShield = false;
 			}
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);

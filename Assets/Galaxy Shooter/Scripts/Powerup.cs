@@ -26,7 +26,7 @@ public class Powerup : MonoBehaviour {
 				} else if (powerupID == 1) {
 					player.SpeedBoostPowerUpOn ();
 				} else if (powerupID == 2) {
-					player.hasShield = true;
+					player.EnableShields();
 				}
 				Destroy (this.gameObject);
 			}
