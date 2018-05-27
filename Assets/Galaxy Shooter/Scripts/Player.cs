@@ -19,6 +19,9 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private float _speedBoost = 1.5f;
 
+	//player has 3 lives
+	public int lives = 3;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
