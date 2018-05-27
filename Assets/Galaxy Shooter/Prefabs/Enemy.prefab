@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _Enemy_Explosion_Prefab: {fileID: 1237354254062738, guid: 04f152ba6746e4644892f1d1889eafe2,
+  _enemyExplosionPrefab: {fileID: 1237354254062738, guid: 04f152ba6746e4644892f1d1889eafe2,
     type: 2}
 --- !u!212 &212244131578043044
 SpriteRenderer:
