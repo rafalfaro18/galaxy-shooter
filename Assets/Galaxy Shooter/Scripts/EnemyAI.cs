@@ -51,9 +51,6 @@ public class EnemyAI : MonoBehaviour {
 			}
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
 			Destroy (this.gameObject);
-			if(_uiManager!=null){
-				_uiManager.UpdateScore();
-			}
 		} 
 
 	}
