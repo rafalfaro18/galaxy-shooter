@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour {
 	//variable for speed
 	[SerializeField]
 	private float _speed = 5.0f;
+	[SerializeField]
+	private GameObject _Enemy_Explosion_Prefab;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,7 @@ public class EnemyAI : MonoBehaviour {
 		if(other.tag == "Laser" ){
 			//if enemy colides the laser, the laser and the enemy are destroyed
 			Destroy(this.gameObject);
+			Instantiate (_Enemy_Explosion_Prefab, transform.position, Quaternion.identity);
 			if(other.transform.parent != null){
 				Destroy (other.transform.parent.gameObject);
 			}
@@ -41,6 +44,7 @@ public class EnemyAI : MonoBehaviour {
 				player.Damage ();
 			}
 			Destroy (this.gameObject);
+			Instantiate (_Enemy_Explosion_Prefab, transform.position, Quaternion.identity);
 		} 
 
 	}
