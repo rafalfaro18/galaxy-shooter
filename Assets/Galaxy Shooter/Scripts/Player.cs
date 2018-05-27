@@ -22,6 +22,9 @@ public class Player : MonoBehaviour {
 	//player has 3 lives
 	public int lives = 3;
 
+	[SerializeField]
+	private GameObject _playerExplosionPrefab;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -77,6 +80,7 @@ public class Player : MonoBehaviour {
 		lives--;
 		if(lives < 1){
 			Destroy (this.gameObject);
+			Instantiate (_playerExplosionPrefab, transform.position, Quaternion.identity);
 		}
 	}
 
