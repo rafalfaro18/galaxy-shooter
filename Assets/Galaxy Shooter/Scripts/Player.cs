@@ -36,6 +36,10 @@ public class Player : MonoBehaviour {
 	private SpawnManager _spawnManager;
 	private AudioSource _audioSource;
 
+	[SerializeField]
+	private GameObject[] engines;
+	private int hitCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		transform.position = Vector3.zero;
@@ -49,6 +53,7 @@ public class Player : MonoBehaviour {
 			_spawnManager.StartSpawnRoutines ();
 		}
 		_audioSource = GetComponent<AudioSource> ();
+		hitCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -98,13 +103,21 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void Damage(){
+	public void Damage(){		
 		//if shield on don't do the damage
 		if(shieldsActive == true){
 			shieldsActive = false;
 			_shieldGameObject.SetActive (false);
 			return;
 		}
+
+		hitCount++;
+		if (hitCount == 1){
+			engines [0].SetActive (true);
+		} else if(hitCount == 2){
+			engines [1].SetActive (true);
+		}
+
 		lives--;
 		_uiManager.UpdateLives (lives);
 		if(lives < 1){
