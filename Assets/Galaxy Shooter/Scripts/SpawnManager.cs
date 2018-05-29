@@ -8,10 +8,14 @@ public class SpawnManager : MonoBehaviour {
 	private GameObject enemyShipPrefab;
 	[SerializeField]
 	private GameObject[] powerups;
+	private UIManager _uiManagerComponent;
+	[SerializeField]
+	private GameObject playerPrefab;
 
 
 	// Use this for initialization
 	void Start () {
+		_uiManagerComponent = GameObject.Find ("Canvas").GetComponent<UIManager> ();
 		StartCoroutine (EnemySpawnRoutine ());
 		StartCoroutine (PowerupSpawnRoutine ());
 	}
@@ -25,16 +29,24 @@ public class SpawnManager : MonoBehaviour {
 	IEnumerator EnemySpawnRoutine(){
 		//create a game loop (while infinite loop) while true yield return new WaitForSeconds(5)
 		while(true){
-			Instantiate (enemyShipPrefab, new Vector3(Random.Range(-7.0f, 7.0f), 7, 0) , Quaternion.identity );
+			if(_uiManagerComponent.hasGameStarted == true){
+				Instantiate (enemyShipPrefab, new Vector3(Random.Range(-7.0f, 7.0f), 7, 0) , Quaternion.identity );
+			}
 			yield return new WaitForSeconds (5.0f);
 		}
 	}
 
 	IEnumerator PowerupSpawnRoutine(){
 		while (true) {
-			int randomPowerup = Random.Range (0, 3);
-			Instantiate (powerups [randomPowerup], new Vector3 (Random.Range (-7.0f, 7.0f), 7, 0), Quaternion.identity);
+			if (_uiManagerComponent.hasGameStarted == true) {
+				int randomPowerup = Random.Range (0, 3);
+				Instantiate (powerups [randomPowerup], new Vector3 (Random.Range (-7.0f, 7.0f), 7, 0), Quaternion.identity);
+			}
 			yield return new WaitForSeconds (5.0f);
 		}
+	}
+
+	public void SpawnPlayer(){
+		Instantiate (playerPrefab, Vector3.zero, Quaternion.identity);
 	}
 }

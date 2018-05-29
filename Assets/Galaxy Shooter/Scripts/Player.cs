@@ -99,6 +99,7 @@ public class Player : MonoBehaviour {
 		_uiManager.UpdateLives (lives);
 		if(lives < 1){
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
+			_uiManager.playerAlive = false;
 			Destroy (this.gameObject);
 		}
 	}
