@@ -32,6 +32,7 @@ public class Player : MonoBehaviour {
 
 	[SerializeField]
 	private UIManager _uiManager;
+	private GameManager _gameManager;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour {
 		if(_uiManager!=null){
 			_uiManager.UpdateLives (lives);
 		}
+		_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 	}
 	
 	// Update is called once per frame
@@ -99,7 +101,8 @@ public class Player : MonoBehaviour {
 		_uiManager.UpdateLives (lives);
 		if(lives < 1){
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
-			_uiManager.playerAlive = false;
+			_gameManager.gameOver = true;
+			_uiManager.ShowTitleScreen ();
 			Destroy (this.gameObject);
 		}
 	}
