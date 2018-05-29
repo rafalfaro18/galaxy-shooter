@@ -22,7 +22,6 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void UpdateLives(int currentLives){
-		Debug.Log ("PLayer lives: "+currentLives);
 		livesImageDisplay.sprite = lives[currentLives];
 	}
 

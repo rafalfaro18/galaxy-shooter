@@ -33,6 +33,7 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private UIManager _uiManager;
 	private GameManager _gameManager;
+	private SpawnManager _spawnManager;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +43,10 @@ public class Player : MonoBehaviour {
 			_uiManager.UpdateLives (lives);
 		}
 		_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		_spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<SpawnManager> ();
+		if(_spawnManager != null){
+			_spawnManager.StartSpawnRoutines ();
+		}
 	}
 	
 	// Update is called once per frame
