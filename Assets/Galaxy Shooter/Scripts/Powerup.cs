@@ -25,6 +25,7 @@ public class Powerup : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.tag == "Player") {
 			Player player = other.GetComponent<Player> ();
+			AudioSource.PlayClipAtPoint (_clip, Camera.main.transform.position);
 			if (player != null) {
 				if (powerupID == 0) {
 					player.TripleShotPowerUpOn ();
@@ -33,7 +34,6 @@ public class Powerup : MonoBehaviour {
 				} else if (powerupID == 2) {
 					player.EnableShields();
 				}
-				AudioSource.PlayClipAtPoint (_clip, Camera.main.transform.position);
 				Destroy (this.gameObject);
 			}
 		}
