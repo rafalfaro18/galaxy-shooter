@@ -81,6 +81,7 @@ MonoBehaviour:
   _speed: 5
   _enemyExplosionPrefab: {fileID: 1237354254062738, guid: 04f152ba6746e4644892f1d1889eafe2,
     type: 2}
+  _clip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
 --- !u!212 &212244131578043044
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -113,7 +114,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1309678757
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3154912113cbb4a498df6f571c74e18c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

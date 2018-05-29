@@ -9,9 +9,10 @@ public class EnemyAI : MonoBehaviour {
 	private float _speed = 5.0f;
 	[SerializeField]
 	private GameObject _enemyExplosionPrefab;
-	[SerializeField]
 	private UIManager _uiManager;
-
+	private AudioSource _audioSource;
+	[SerializeField]
+	private AudioClip _clip;
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +35,7 @@ public class EnemyAI : MonoBehaviour {
 		if(other.tag == "Laser" ){
 			//if enemy colides the laser, the laser and the enemy are destroyed
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
+			AudioSource.PlayClipAtPoint (_clip, Camera.main.transform.position);
 			Destroy(this.gameObject);
 			if(_uiManager!=null){
 				_uiManager.UpdateScore();
@@ -50,6 +52,7 @@ public class EnemyAI : MonoBehaviour {
 				player.Damage ();
 			}
 			Instantiate (_enemyExplosionPrefab, transform.position, Quaternion.identity);
+			AudioSource.PlayClipAtPoint (_clip, Camera.main.transform.position);
 			Destroy (this.gameObject);
 		} 
 
