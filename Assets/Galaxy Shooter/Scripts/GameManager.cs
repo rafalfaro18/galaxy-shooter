@@ -23,8 +23,11 @@ public class GameManager : MonoBehaviour {
 		if(gameOver == true){
 			//if space key pressed
 			if(Input.GetKeyDown(KeyCode.Space)){
-				//spawn player
-				Instantiate(player, Vector3.zero, Quaternion.identity);
+                //spawn player
+                if (isCoopMode == false)
+                {
+                    Instantiate(player, Vector3.zero, Quaternion.identity);
+                }
 				//gameover is false
 				gameOver = false;
 				//hide title screen
