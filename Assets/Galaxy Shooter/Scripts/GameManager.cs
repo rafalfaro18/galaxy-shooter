@@ -69,4 +69,10 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
 	}
+
+    public void ResumeGame()
+    {
+        _pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
 }

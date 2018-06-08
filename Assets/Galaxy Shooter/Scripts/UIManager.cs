@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
@@ -39,4 +40,17 @@ public class UIManager : MonoBehaviour {
 		score = 0;
 		scoreText.text = "Score: ";
 	}
+
+    //ResumePlay
+    public void ResumePlay(){
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.ResumeGame();
+    }
+
+    //BackToMainMenu
+    public void BackToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main_Menu");
+    }
 }
