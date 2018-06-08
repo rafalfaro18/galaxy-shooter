@@ -65,15 +65,27 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if player 1
-        Movement ();
-		
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)){
-			Shoot ();
-		}
+        //if player 1
+        if (isPlayerOne == true )
+        {
+            Movement();
+
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)) && isPlayerOne == true)
+            {
+                Shoot();
+            }
+        }
 
         //if player 2
-        //TO DO ...
+        if(isPlayerTwo == true){
+            
+            PlayerTwoMovement();
+
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)) && isPlayerTwo == true)
+            {
+                ShootPlayerTwo();
+            }
+        }
 	}
 
 	private void Shoot(){
@@ -87,6 +99,23 @@ public class Player : MonoBehaviour {
 			_canFire = Time.time + _fireRate;
 		}
 	}
+
+    private void ShootPlayerTwo()
+    {
+        if (Time.time > _canFire)
+        {
+            _audioSource.Play();
+            if (canTripleShot == true)
+            {
+                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
+            }
+            _canFire = Time.time + _fireRate;
+        }
+    }
 
 	private void Movement(){
 		float horizontalInput = Input.GetAxis ("Horizontal");
@@ -114,6 +143,65 @@ public class Player : MonoBehaviour {
 			transform.position = new Vector3 (9.5f, transform.position.y, 0);
 		}
 	}
+
+    private void PlayerTwoMovement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+       
+
+        float totalSpeed = 0.0f;
+        if (isSpeedBoostActive == true)
+        {
+            totalSpeed = _speed * _speedBoost;
+        }
+        else
+        {
+            totalSpeed = _speed;
+        }
+
+
+        //if hit I move up
+        if (Input.GetKey(KeyCode.I))
+        {
+            transform.Translate(Vector3.up * totalSpeed * Time.deltaTime);
+        }
+        //if hit L move right
+        if (Input.GetKey(KeyCode.L))
+        {
+            transform.Translate(Vector3.right * totalSpeed * Time.deltaTime);
+        }
+
+        //if hit K move down
+        if (Input.GetKey(KeyCode.K))
+        {
+            transform.Translate(Vector3.down * totalSpeed * Time.deltaTime);
+        }
+        //if hit J move left
+        if (Input.GetKey(KeyCode.J))
+        {
+            transform.Translate(Vector3.left * totalSpeed * Time.deltaTime);
+        }
+
+
+        if (transform.position.y > 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, 0);
+        }
+        else if (transform.position.y < -4.2f)
+        {
+            transform.position = new Vector3(transform.position.x, -4.2f, 0);
+        }
+
+        if (transform.position.x > 9.5f)
+        {
+            transform.position = new Vector3(-9.5f, transform.position.y, 0);
+        }
+        else if (transform.position.x < -9.5f)
+        {
+            transform.position = new Vector3(9.5f, transform.position.y, 0);
+        }
+    }
 
 	public void Damage(){		
 		//if shield on don't do the damage
