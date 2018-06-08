@@ -18,13 +18,13 @@ public class Main_Menu : MonoBehaviour {
     public void LoadSinglePlayer(){
         Debug.Log("Single Player Loading...");
         //Load Scene 1 -- single player scene
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Single_Player");
     }
 
-    public void LoadCoOp()
+    public void LoadCoOpMode()
     {
         Debug.Log("Co-Op Loading...");
         //Load Scene 2 -- Co-Op scene
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Co-Op_Mode");
     }
 }
