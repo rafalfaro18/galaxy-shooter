@@ -8,10 +8,13 @@ public class GameManager : MonoBehaviour {
 	public GameObject player;
 	private UIManager _uiManager;
     public bool isCoopMode = false;
+    private SpawnManager _spawnManager;
 
 	// Use this for initialization
 	void Start () {
 		_uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,10 @@ public class GameManager : MonoBehaviour {
 				gameOver = false;
 				//hide title screen
 				_uiManager.HideTitleScreen();
+
+                if(_spawnManager != null){
+                  _spawnManager.StartSpawnRoutines ();
+                }
 			}
 		}
 	}

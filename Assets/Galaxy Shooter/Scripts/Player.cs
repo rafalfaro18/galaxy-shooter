@@ -48,10 +48,10 @@ public class Player : MonoBehaviour {
 			_uiManager.UpdateLives (lives);
 		}
 		_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-		_spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<SpawnManager> ();
-		if(_spawnManager != null){
-			_spawnManager.StartSpawnRoutines ();
-		}
+		//_spawnManager = GameObject.Find ("Spawn_Manager").GetComponent<SpawnManager> ();
+		//if(_spawnManager != null){
+		//	_spawnManager.StartSpawnRoutines ();
+		//}
 		_audioSource = GetComponent<AudioSource> ();
 		hitCount = 0;
         if (_gameManager.isCoopMode == false)
