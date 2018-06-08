@@ -19,6 +19,9 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private float _speedBoost = 1.5f;
 
+    public bool isPlayerOne = false;
+    public bool isPlayerTwo = false;
+
 	//player has 3 lives
 	public int lives = 3;
 
@@ -62,10 +65,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Movement ();
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)){
+		//if player 1
+        Movement ();
+		
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)){
 			Shoot ();
 		}
+
+        //if player 2
+        //TO DO ...
 	}
 
 	private void Shoot(){
