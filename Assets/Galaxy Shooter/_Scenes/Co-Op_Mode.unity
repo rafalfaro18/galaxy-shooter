@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOver: 1
   player: {fileID: 1583660254670668, guid: 5f9f672f340cc45469c9b3c7cddcbd41, type: 2}
+  isCoopMode: 1
 --- !u!4 &348736070
 Transform:
   m_ObjectHideFlags: 0

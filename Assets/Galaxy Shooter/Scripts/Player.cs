@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.position = Vector3.zero;
+        
 		_uiManager = GameObject.Find ("Canvas").GetComponent<UIManager> ();
 		if(_uiManager!=null){
 			_uiManager.UpdateLives (lives);
@@ -54,6 +54,10 @@ public class Player : MonoBehaviour {
 		}
 		_audioSource = GetComponent<AudioSource> ();
 		hitCount = 0;
+        if (_gameManager.isCoopMode == false)
+        {
+            transform.position = Vector3.zero;
+        }
 	}
 	
 	// Update is called once per frame

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 	public bool gameOver = true;
 	public GameObject player;
 	private UIManager _uiManager;
+    public bool isCoopMode = false;
 
 	// Use this for initialization
 	void Start () {
