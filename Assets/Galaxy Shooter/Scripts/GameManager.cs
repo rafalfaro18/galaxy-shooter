@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public bool isCoopMode = false;
     private SpawnManager _spawnManager;
     private GameObject players = null;
+    [SerializeField]
+    private GameObject _pauseMenuPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -57,5 +59,14 @@ public class GameManager : MonoBehaviour {
 
             }
 		}
+
+        //if p key
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //show pause menu
+            _pauseMenuPanel.SetActive(true);
+            //pause game
+            Time.timeScale = 0;
+        }
 	}
 }

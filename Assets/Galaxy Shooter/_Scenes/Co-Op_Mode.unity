@@ -438,6 +438,7 @@ MonoBehaviour:
   _coopPlayers: {fileID: 1443213904424844, guid: b5638943169c448cd81ba7e875ed42ed,
     type: 2}
   isCoopMode: 1
+  _pauseMenuPanel: {fileID: 1403393232}
 --- !u!4 &348736070
 Transform:
   m_ObjectHideFlags: 0
