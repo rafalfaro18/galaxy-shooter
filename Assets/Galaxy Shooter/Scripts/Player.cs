@@ -81,9 +81,9 @@ public class Player : MonoBehaviour {
             
             PlayerTwoMovement();
 
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)) && isPlayerTwo == true)
+            if (Input.GetKeyDown(KeyCode.Return) && isPlayerTwo == true)
             {
-                ShootPlayerTwo();
+                Shoot();
             }
         }
 	}
@@ -99,23 +99,6 @@ public class Player : MonoBehaviour {
 			_canFire = Time.time + _fireRate;
 		}
 	}
-
-    private void ShootPlayerTwo()
-    {
-        if (Time.time > _canFire)
-        {
-            _audioSource.Play();
-            if (canTripleShot == true)
-            {
-                Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.88f, 0), Quaternion.identity);
-            }
-            _canFire = Time.time + _fireRate;
-        }
-    }
 
 	private void Movement(){
 		float horizontalInput = Input.GetAxis ("Horizontal");
