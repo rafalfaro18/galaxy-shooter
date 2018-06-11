@@ -16,12 +16,15 @@ public class GameManager : MonoBehaviour {
     private GameObject players = null;
     [SerializeField]
     private GameObject _pauseMenuPanel;
+    [SerializeField]
+    private Animator _pauseAnimator;
 
 	// Use this for initialization
 	void Start () {
 		_uiManager = GameObject.Find ("Canvas").GetComponent<UIManager>();
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
-
+        _pauseAnimator = GameObject.Find("Pause_Menu_Panel").GetComponent<Animator>();
+        _pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
 	}
 	
 	// Update is called once per frame
@@ -65,6 +68,7 @@ public class GameManager : MonoBehaviour {
         {
             //show pause menu
             _pauseMenuPanel.SetActive(true);
+            _pauseAnimator.SetBool("IsPaused", true);
             //pause game
             Time.timeScale = 0;
         }
