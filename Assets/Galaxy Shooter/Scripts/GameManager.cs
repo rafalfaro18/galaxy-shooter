@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
 		//if game over is true
 		if(gameOver == true){
             //if space key pressed
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
             {
                 //spawn player
                 if (isCoopMode == false)

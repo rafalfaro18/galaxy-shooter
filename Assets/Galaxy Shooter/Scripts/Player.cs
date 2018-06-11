@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 	[SerializeField]
@@ -66,14 +67,27 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //if player 1
-        if (isPlayerOne == true )
+        if (isPlayerOne == true)
         {
             Movement();
+#if UNITY_ANDROID
+            if ((Input.GetKeyDown(KeyCode.Space) || CrossPlatformInputManager.GetButtonDown("Fire")) && isPlayerOne == true)
+            {
+                Shoot();
+            }
 
+#elif UNITY_IOS
+
+            if ((Input.GetKeyDown(KeyCode.Space) || CrossPlatformInputManager.GetButtonDown("Fire")) && isPlayerOne == true)
+            {
+                Shoot();
+            }
+#else
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0)) && isPlayerOne == true)
             {
                 Shoot();
             }
+#endif
         }
 
         //if player 2
@@ -101,8 +115,8 @@ public class Player : MonoBehaviour {
 	}
 
 	private void Movement(){
-		float horizontalInput = Input.GetAxis ("Horizontal");
-		float verticalInput = Input.GetAxis ("Vertical");
+        float horizontalInput = CrossPlatformInputManager.GetAxis("Horizontal"); //Input.GetAxis ("Horizontal");
+        float verticalInput = CrossPlatformInputManager.GetAxis("Vertical"); //Input.GetAxis ("Vertical");
 
 		float totalSpeed = 0.0f;
 		if (isSpeedBoostActive == true) {
