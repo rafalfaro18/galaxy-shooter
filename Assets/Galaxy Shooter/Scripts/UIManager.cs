@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour {
 
 	public Sprite[] lives;
 	public Image livesImageDisplay;
-	public int score;
-	public Text scoreText;
+    public int score, bestScore;
+    public Text scoreText, bestText;
 	public GameObject titleScreen;
 
 	// Use this for initialization
@@ -30,6 +30,18 @@ public class UIManager : MonoBehaviour {
 		score += 10;
 		scoreText.text = "Score: " + score;
 	}
+
+    //CheckForBestScore
+    public void CheckForBestScore()
+    {
+        //if current score > best score
+        if (score > bestScore)
+        {
+            //bestscore = currentScore
+            bestScore = score;
+            bestText.text = "Best: " + bestScore;
+        }
+    }
 
 	public void ShowTitleScreen(){
 		titleScreen.SetActive (true);

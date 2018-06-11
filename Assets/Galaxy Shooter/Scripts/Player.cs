@@ -207,6 +207,7 @@ public class Player : MonoBehaviour {
 			Instantiate (_explosionPrefab, transform.position, Quaternion.identity);
 			_gameManager.gameOver = true;
 			_uiManager.ShowTitleScreen ();
+            _uiManager.CheckForBestScore();
 			Destroy (this.gameObject);
 		}
 	}
