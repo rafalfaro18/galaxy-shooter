@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        bestScore = PlayerPrefs.GetInt("HighScore", 0);
+        bestText.text = "Best: " + bestScore;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour {
         {
             //bestscore = currentScore
             bestScore = score;
+            PlayerPrefs.SetInt("HighScore", bestScore);
             bestText.text = "Best: " + bestScore;
         }
     }
